@@ -1,10 +1,19 @@
+#
+# Makefile for the bare-metal-arm code.
+#
+#
 
+# Check if the ARM compiler is on the PATH, else set a prefix for finding it.
+ifneq ($(shell which arm-none-eabi-gcc), "")
+  ARMPREFIX =
+else
+  ARMPREFIX = gcc-arm/bin
+endif
 
-GCCBIN = gcc-arm/bin
-CC = $(GCCBIN)/arm-none-eabi-gcc
-AR = $(GCCBIN)/arm-none-eabi-ar
-OBJCOPY = $(GCCBIN)/arm-none-eabi-objcopy
-OBJDUMP = $(GCCBIN)/arm-none-eabi-objdump
+CC = $(ARMPREFIX)arm-none-eabi-gcc
+AR = $(ARMPREFIX)arm-none-eabi-ar
+OBJCOPY = $(ARMPREFIX)arm-none-eabi-objcopy
+OBJDUMP = $(ARMPREFIX)arm-none-eabi-objdump
 
 DEBUG_OPTS = -g3 -gdwarf-2 -gstrict-dwarf
 OPTS = -Os
