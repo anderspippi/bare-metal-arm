@@ -33,7 +33,7 @@ libbare.a: $(LIBOBJS)
 	$(AR) -rv libbare.a $(LIBOBJS)
 	
 clean:
-	-rm *.o *.lst *.out libbare.a *.srec *.dump
+	rm -f *.o *.lst *.out libbare.a *.srec *.dump
 
 %.o: %.c
 	$(CC) $(CFLAGS) -c $<
