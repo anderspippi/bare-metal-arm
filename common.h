@@ -43,7 +43,7 @@ void usb_dump(void);
 // Interrupt enabling and disabling
 static inline void enable_irq(int n) {
     NVIC_ICPR |= 1 << (n - 16);
-    NVIC_ISER |= 1 << (n - 16);			
+    NVIC_ISER |= 1 << (n - 16);
 }
 // TODO:  IRQ disable
 
