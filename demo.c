@@ -26,7 +26,7 @@ int main(void)
     // Run tests
     tests();
     delay(500);
-    RGB_LED(0,100,0);                       // Green
+    RGB_LED(0, 255, 0);                       // Green
 
     // Welcome banner
     iprintf("\r\n\r\n====== Freescale Freedom FRDM-LK25Z\r\n");

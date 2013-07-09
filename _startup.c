@@ -108,7 +108,7 @@ static void init_clocks(void)
 void fault(uint32_t pattern)
 {
     for(;;) {
-        RGB_LED(pattern & 1 ? 100 : 0, 0, 0);           // Set RED led based on LSB
+        RGB_LED(pattern & 1 ? 255 : 0, 0, 0);           // Set RED led based on LSB
         pattern = (pattern >> 1) | (pattern << 31);     // Rotate
         delay(100);
     }
@@ -269,11 +269,11 @@ static void init_led_io(void)
     PORTB_PCR19 = PORT_PCR_MUX(3);  // TPM2_CH1 enable on PTB19 (green)
     PORTD_PCR1  = PORT_PCR_MUX(4);  // TPM0_CH1 enable on PTD1  (blue)
 
-    RGB_LED(0,0,0);                 // Off
+    RGB_LED(0, 0, 0);                 // Off
     
-    TPM0_MOD  = 99;
+    TPM0_MOD  = 255;
     TPM0_C1SC = TPM_CnSC_MSB_MASK | TPM_CnSC_ELSA_MASK;
-    TPM2_MOD  = 99;
+    TPM2_MOD  = 255;
     TPM2_C0SC = TPM_CnSC_MSB_MASK | TPM_CnSC_ELSA_MASK;
     TPM2_C1SC = TPM_CnSC_MSB_MASK | TPM_CnSC_ELSA_MASK;
 
