@@ -4,10 +4,10 @@
 #
 
 # Check if the ARM compiler is on the PATH, else set a prefix for finding it.
-ifneq ($(shell which arm-none-eabi-gcc), "")
+ifneq ("$(shell which arm-none-eabi-gcc)", "")
   ARMPREFIX =
 else
-  ARMPREFIX = gcc-arm/bin
+  ARMPREFIX = ./gcc-arm/bin/
 endif
 
 CC = $(ARMPREFIX)arm-none-eabi-gcc
@@ -55,5 +55,5 @@ clean:
 
 # Download and unpack the GCC ARM embedded toolchain (binaries)
 gcc-arm:
-	curl --location https://launchpad.net/gcc-arm-embedded/4.7/4.7-2012-q4-major/+download/gcc-arm-none-eabi-4_7-2012q4-20121208-linux.tar.bz2 | tar jx
-	ln -s gcc-arm-none-eabi-4_7-2012q4 gcc-arm
+	curl --location https://launchpad.net/gcc-arm-embedded/4.8/4.8-2013-q4-major/+download/gcc-arm-none-eabi-4_8-2013q4-20131204-linux.tar.bz2 | tar jx
+	ln -s gcc-arm-none-eabi-4_8-2013q4 gcc-arm
