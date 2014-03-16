@@ -17,7 +17,7 @@ OBJDUMP = $(ARMPREFIX)arm-none-eabi-objdump
 
 DEBUG_OPTS = -g3 -gdwarf-2 -gstrict-dwarf
 OPTS = -Os
-TARGET = -mcpu=cortex-m0
+TARGET = -mcpu=cortex-m0plus
 CFLAGS = -ffunction-sections -fdata-sections -Wall -Wa,-adhlns="$@.lst" \
 		 -fmessage-length=0 $(TARGET) -mthumb -mfloat-abi=soft \
 		 $(DEBUG_OPTS) $(OPTS) -I .
