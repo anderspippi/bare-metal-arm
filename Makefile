@@ -31,24 +31,24 @@ INCLUDES = freedom.h common.h
 
 # -------------------------------------------------------------------------------
 
-all: demo.srec demo.dump
+all:	demo.srec demo.asm
 
 libbare.a: $(LIBOBJS)
 	$(AR) -rv libbare.a $(LIBOBJS)
 	
 clean:
-	rm -f *.o *.lst *.out libbare.a *.srec *.dump
+	rm -f *.o *.lst *.elf libbare.a *.srec *.asm
 
-%.o: %.c
+%.o:	%.c
 	$(CC) $(CFLAGS) -c $<
 	
-%.dump: %.out
+%.asm:	%.elf
 	$(OBJDUMP) --disassemble $< >$@
 	
-%.srec: %.out
+%.srec:	%.elf
 	$(OBJCOPY) -O srec $< $@
 	
-%.out: %.o mkl25z4.ld libbare.a
+%.elf:	%.o mkl25z4.ld libbare.a
 	$(CC) $(CFLAGS) -T mkl25z4.ld -o $@ $< libbare.a
 	
 # -------------------------------------------------------------------------------
